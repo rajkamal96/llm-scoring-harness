@@ -1,0 +1,9 @@
+{
+  "runs": 3,
+  "maxSpread": 1,
+  "pricing": {
+    "note": "Placeholders (0 = free tier). Put your provider's current USD price per million tokens here to get a cost per page.",
+    "inputPerMTok": 0,
+    "outputPerMTok": 0
+  }
+}

@@ -1,0 +1,53 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Before / after comparison</title><style>
+:root{--bg:#fff;--fg:#1a1f24;--muted:#55606a;--line:#d9e0e6;--soft:#f4f7f9;--ok:#067647;--okbg:#ecfdf3;--bad:#b42318;--badbg:#fef3f2;--warn:#8a5a00;--warnbg:#fff8e6}
+@media (prefers-color-scheme:dark){:root{--bg:#12171b;--fg:#e8edf0;--muted:#9aa6b0;--line:#2a333b;--soft:#1a2127;--ok:#6ce9a6;--okbg:#0f2a1d;--bad:#ff8a80;--badbg:#3a1a18;--warn:#ffd27a;--warnbg:#33290d}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:16px 16px 60px}h1{font-size:1.5rem;margin:8px 0}h2{font-size:1.15rem;margin:26px 0 8px}h3{font-size:1rem;margin:0}
+.muted{color:var(--muted)}.note{background:var(--soft);border:1px solid var(--line);border-left:4px solid #1d4ed8;padding:10px 14px;border-radius:6px;margin:12px 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}.card{border:1px solid var(--line);border-radius:10px;padding:14px}
+.big{font-size:2.2rem;font-weight:700;line-height:1.1}.grade{display:inline-block;margin-left:8px;padding:1px 10px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-weight:600}
+.tag{display:inline-block;padding:1px 8px;border-radius:999px;font-size:12.5px;border:1px solid var(--line)}.tag.ok{background:var(--okbg);color:var(--ok)}.tag.bad{background:var(--badbg);color:var(--bad)}.tag.warn{background:var(--warnbg);color:var(--warn)}
+table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:12.5px;color:var(--muted)}
+.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.quote{font-style:italic;color:var(--muted)}.tablewrap{overflow-x:auto}
+ul{margin:4px 0;padding-left:20px}.flagline{margin:2px 0}
+</style></head><body><div class="wrap">
+<h1>Before / after comparison</h1>
+<div class="note"><strong>Demo report.</strong> Pages are fictional. <strong>Scores here come from a rule-based MOCK scorer, not a language model</strong>; they only show the harness working. The composite is computed in code from the category scores using the weights in <code>config/weights.json</code> (title 15 · benefits 25 · structure 15 · specs 20 · claims 15 · keywords 10).</div>
+<div class="cards"><div class="card"><h3>Before</h3><div class="muted">TrailMate Bottle</div>
+<div class="big">20<span class="grade">F</span></div>
+<div class="muted">composite (0–100) · runs 13.8–22.5 · 3/3 valid run(s)</div>
+<div class="muted">provider mock:noise=0.3 · 3 call(s), 0 tokens · est. cost $0.0000</div></div><div class="card"><h3>After</h3><div class="muted">TrailMate 750 ml Insulated Steel Water Bottle, Cold 24 h / Hot 12 h, Leak-Proof Lid</div>
+<div class="big">91.3<span class="grade">A</span></div>
+<div class="muted">composite (0–100) · runs 83.7–91.3 · 3/3 valid run(s)</div>
+<div class="muted">provider mock:noise=0.3 · 3 call(s), 0 tokens · est. cost $0.0000</div></div></div>
+<h2>Before / after</h2><div class="note"><span class="tag ok">improved</span> The run ranges do not overlap (13.8–22.5 vs 83.7–91.3), so the improvement is larger than the run-to-run noise observed. With only 3 run(s) per page this is evidence, not proof.</div>
+<div class="tablewrap"><table><thead><tr><th>Category</th><th class="num">Before</th><th class="num">After</th><th class="num">Change</th><th>Beyond noise?</th></tr></thead><tbody>
+<tr><td>Title</td><td class="num">1</td><td class="num">4</td><td class="num">+3</td><td><span class="tag ok">yes</span></td></tr><tr><td>Benefits and persuasion</td><td class="num">1</td><td class="num">3</td><td class="num">+2</td><td><span class="tag ok">yes</span></td></tr><tr><td>Structure and scannability</td><td class="num">0</td><td class="num">4</td><td class="num">+4</td><td><span class="tag ok">yes</span></td></tr><tr><td>Specifications and detail</td><td class="num">0</td><td class="num">4</td><td class="num">+4</td><td><span class="tag ok">yes</span></td></tr><tr><td>Claims and trust</td><td class="num">2</td><td class="num">4</td><td class="num">+2</td><td><span class="tag ok">yes</span></td></tr><tr><td>Search keyword coverage</td><td class="num">1</td><td class="num">3</td><td class="num">+2</td><td><span class="tag warn">not shown</span></td></tr>
+<tr><td><strong>Composite</strong></td><td class="num">20 (F)</td><td class="num">91.3 (A)</td><td class="num"><strong>+71.3</strong></td><td><span class="tag ok">improved</span></td></tr></tbody></table></div>
+<h2>Before: categories</h2><div class="tablewrap"><table><thead><tr><th>Category</th><th class="num">Score</th><th class="num">Per run</th><th>Evidence and rationale</th></tr></thead><tbody><tr><td><strong>Title</strong></td><td class="num">1/4</td>
+<td class="num">1, 0, 1 </td>
+<td><span class="quote">“TrailMate Bottle”</span> <div class="muted">Mock rule-based score.</div></td></tr><tr><td><strong>Benefits and persuasion</strong></td><td class="num">1/4</td>
+<td class="num">1, 1, 1 </td>
+<td><span class="quote">“TrailMate Bottle”</span> <div class="muted">Mock rule-based score.</div></td></tr><tr><td><strong>Structure and scannability</strong></td><td class="num">0/4</td>
+<td class="num">0, 0, 0 </td>
+<td><span class="quote">“TrailMate Bottle”</span> <div class="muted">Mock rule-based score.</div></td></tr><tr><td><strong>Specifications and detail</strong></td><td class="num">0/4</td>
+<td class="num">0, 0, 0 </td>
+<td><span class="quote">“TrailMate Bottle”</span> <div class="muted">Mock rule-based score.</div></td></tr><tr><td><strong>Claims and trust</strong></td><td class="num">2/4</td>
+<td class="num">2, 2, 2 </td>
+<td><span class="quote">“TrailMate Bottle”</span> <div class="muted">Mock rule-based score.</div></td></tr><tr><td><strong>Search keyword coverage</strong></td><td class="num">1/4</td>
+<td class="num">1, 0, 2 <span class="tag warn">runs disagree</span></td>
+<td><span class="quote">“TrailMate Bottle”</span> <div class="muted">Mock rule-based score.</div></td></tr></tbody></table></div><h3>Before: flags</h3><div class="flagline"><span class="tag warn">unstable</span> Search keyword coverage: runs disagree (scores 0, 1, 2).</div><h3 style="margin-top:12px">Before: recommended fixes</h3><ul><li><span class="tag bad">major</span> <strong>title:</strong> Improve title (mock suggestion).</li><li><span class="tag bad">major</span> <strong>benefits:</strong> Improve benefits (mock suggestion).</li><li><span class="tag bad">major</span> <strong>structure:</strong> Improve structure (mock suggestion).</li><li><span class="tag bad">major</span> <strong>specs:</strong> Improve specs (mock suggestion).</li><li><span class="tag warn">minor</span> <strong>claims:</strong> Improve claims (mock suggestion).</li><li><span class="tag bad">major</span> <strong>keywords:</strong> Improve keywords (mock suggestion).</li></ul>
+<h2>After: categories</h2><div class="tablewrap"><table><thead><tr><th>Category</th><th class="num">Score</th><th class="num">Per run</th><th>Evidence and rationale</th></tr></thead><tbody><tr><td><strong>Title</strong></td><td class="num">4/4</td>
+<td class="num">4, 4, 3 </td>
+<td><span class="quote">“TrailMate 750 ml Insulated Steel Water Bottle, Cold 24 h / Hot 12 h, Leak-Proof Lid”</span> <div class="muted">Mock rule-based score.</div></td></tr><tr><td><strong>Benefits and persuasion</strong></td><td class="num">3/4</td>
+<td class="num">3, 3, 2 </td>
+<td><span class="quote">“TrailMate 750 ml Insulated Steel Water Bottle, Cold 24 h / Hot 12 h, Leak-Proof Lid”</span> <div class="muted">Mock rule-based score.</div></td></tr><tr><td><strong>Structure and scannability</strong></td><td class="num">4/4</td>
+<td class="num">4, 4, 4 </td>
+<td><span class="quote">“TrailMate 750 ml Insulated Steel Water Bottle, Cold 24 h / Hot 12 h, Leak-Proof Lid”</span> <div class="muted">Mock rule-based score.</div></td></tr><tr><td><strong>Specifications and detail</strong></td><td class="num">4/4</td>
+<td class="num">4, 4, 4 </td>
+<td><span class="quote">“TrailMate 750 ml Insulated Steel Water Bottle, Cold 24 h / Hot 12 h, Leak-Proof Lid”</span> <div class="muted">Mock rule-based score.</div></td></tr><tr><td><strong>Claims and trust</strong></td><td class="num">4/4</td>
+<td class="num">4, 4, 4 </td>
+<td><span class="quote">“TrailMate 750 ml Insulated Steel Water Bottle, Cold 24 h / Hot 12 h, Leak-Proof Lid”</span> <div class="muted">Mock rule-based score.</div></td></tr><tr><td><strong>Search keyword coverage</strong></td><td class="num">3/4</td>
+<td class="num">3, 3, 4 </td>
+<td><span class="quote">“TrailMate 750 ml Insulated Steel Water Bottle, Cold 24 h / Hot 12 h, Leak-Proof Lid”</span> <div class="muted">Mock rule-based score.</div></td></tr></tbody></table></div><h3>After: flags</h3><div class="muted">No flags.</div><h3 style="margin-top:12px">After: recommended fixes</h3><ul><li><span class="tag warn">minor</span> <strong>benefits:</strong> Improve benefits (mock suggestion).</li><li><span class="tag warn">minor</span> <strong>keywords:</strong> Improve keywords (mock suggestion).</li></ul>
+</div></body></html>

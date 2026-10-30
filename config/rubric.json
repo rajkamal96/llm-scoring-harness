@@ -1,0 +1,104 @@
+{
+  "version": "demo-1",
+  "name": "Example product-page copy rubric (invented for this demo, not any client's rubric)",
+  "unsupportedScoreCap": 1,
+  "categories": [
+    {
+      "id": "title",
+      "name": "Title",
+      "criteria": "Does the title say what the product is, for whom or what it is for, and its key differentiator, in plain words?",
+      "levels": {
+        "0": "No usable title, or only a brand name.",
+        "1": "Title names the product category only; vague or stuffed with keywords.",
+        "2": "Clear product name but misses either the use or a key attribute.",
+        "3": "Clear name plus use or key attribute, readable.",
+        "4": "Clear name, use and a concrete differentiator, natural wording."
+      },
+      "caps": [
+        { "fact": "titleChars", "lt": 30, "max": 2 },
+        { "fact": "titleChars", "gt": 200, "max": 2 }
+      ]
+    },
+    {
+      "id": "benefits",
+      "name": "Benefits and persuasion",
+      "criteria": "Does the copy explain what the shopper gets (outcomes, situations of use), not only what the product is?",
+      "levels": {
+        "0": "No benefits; only a name or a list of nouns.",
+        "1": "Generic praise with no concrete outcome.",
+        "2": "Some concrete benefits but most statements are generic.",
+        "3": "Several concrete benefits tied to real use situations.",
+        "4": "Benefits are concrete, ordered by importance, and tied to specific features."
+      },
+      "caps": []
+    },
+    {
+      "id": "structure",
+      "name": "Structure and scannability",
+      "criteria": "Can a shopper scan the page? Look at headings, bullets and paragraph length.",
+      "levels": {
+        "0": "One undifferentiated block of text.",
+        "1": "Mostly long paragraphs, little structure.",
+        "2": "Some structure (a few bullets or headings) but uneven.",
+        "3": "Clear sections and bullets, mostly easy to scan.",
+        "4": "Clear headings and bullets, short paragraphs, logical order."
+      },
+      "caps": [
+        { "fact": "bulletCount", "lt": 1, "max": 1 },
+        { "fact": "bulletCount", "lt": 3, "max": 2 }
+      ]
+    },
+    {
+      "id": "specs",
+      "name": "Specifications and detail",
+      "criteria": "Does the page give the facts a shopper needs to decide: size, weight, materials, capacity, power, compatibility, what is in the box?",
+      "levels": {
+        "0": "No specifications.",
+        "1": "One or two vague specifications.",
+        "2": "Some specifications, important ones missing.",
+        "3": "Most important specifications with units.",
+        "4": "Complete specifications with units, including what is in the box and care or compatibility."
+      },
+      "caps": [
+        { "fact": "numberWithUnitCount", "lt": 1, "max": 1 },
+        { "fact": "numberWithUnitCount", "lt": 3, "max": 2 }
+      ]
+    },
+    {
+      "id": "claims",
+      "name": "Claims and trust",
+      "criteria": "Are claims specific and supportable (numbers, tests, warranty), or vague superlatives and unsupported promises?",
+      "levels": {
+        "0": "Mostly unsupported or misleading claims.",
+        "1": "Many vague superlatives, nothing supportable.",
+        "2": "Mix of supportable and unsupported claims.",
+        "3": "Mostly specific, supportable claims.",
+        "4": "Specific claims with numbers or conditions; no unsupported superlatives."
+      },
+      "caps": [{ "fact": "superlativeCount", "gt": 2, "max": 2 }]
+    },
+    {
+      "id": "keywords",
+      "name": "Search keyword coverage",
+      "criteria": "Would a shopper searching for this kind of product find it? Are the natural search terms present without stuffing?",
+      "levels": {
+        "0": "Almost none of the natural search terms.",
+        "1": "A few terms, mostly brand-specific words.",
+        "2": "Main term present, related terms missing.",
+        "3": "Main and related terms present, natural wording.",
+        "4": "Main, related and use-case terms present, natural wording, no stuffing."
+      },
+      "caps": []
+    }
+  ],
+  "consistencyRules": [
+    { "type": "major-fix-vs-high-score", "minScore": 3 },
+    { "type": "low-score-without-fix", "maxScore": 1 },
+    {
+      "type": "implication",
+      "if": { "category": "specs", "atLeast": 3 },
+      "then": { "category": "structure", "atLeast": 2 },
+      "message": "A page with strong specifications is unlikely to be unstructured; check the structure score."
+    }
+  ]
+}

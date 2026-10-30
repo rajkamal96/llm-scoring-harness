@@ -1,0 +1,24 @@
+{
+  "name": "llm-scoring-harness",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Demo: make LLM rubric scoring consistent, measurable and comparable (before/after) with the arithmetic done in code.",
+  "scripts": {
+    "score": "tsx src/cli.ts score",
+    "compare": "tsx src/cli.ts compare",
+    "consistency": "tsx src/cli.ts consistency",
+    "simulate": "tsx scripts/simulate.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "tsx": "^4.19.0",
+    "typescript": "^5",
+    "vitest": "^3.0.0"
+  }
+}

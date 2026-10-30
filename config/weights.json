@@ -1,0 +1,11 @@
+{
+  "note": "Edit these to change the composite score. Weights are relative: they are normalised, so they do not need to sum to 100.",
+  "weights": { "title": 15, "benefits": 25, "structure": 15, "specs": 20, "claims": 15, "keywords": 10 },
+  "grades": [
+    { "min": 85, "grade": "A" },
+    { "min": 70, "grade": "B" },
+    { "min": 55, "grade": "C" },
+    { "min": 40, "grade": "D" },
+    { "min": 0, "grade": "F" }
+  ]
+}
